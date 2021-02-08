@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Color Button</title>
+
+    </head>
+    <body id="section">
+      <script>
+          function changeColor(newColor) {
+              var colorValue = document.getElementById('section');
+              colorValue.style.backgroundColor = newColor;
+          };
+        </script>
+      <style>
+        body {
+          margin: 70px auto;
+          text-align: center;
+        }
+
+        button {
+          font-size: 24px;
+          padding: 25px 50px;
+          margin: 20px;
+        }
+      </style>
+
+      <div>
+        <button onClick="changeColor('blue');">blue</button>
+        <button onClick="changeColor('red');">red</button>
+        <button onClick="changeColor('yellow');">yellow</button>
+        <br>
+        <button onClick="changeColor('purple')">purple</button>
+        <button onClick="changeColor('green')">green</button>
+        <button onClick="changeColor('gray')">gray</button>
+        <br>
+        <button onClick="changeColor('orange')">orange</button>
+        <button onClick="changeColor('cyan')">cyan</button>
+        <button onClick="changeColor('plum')">plum</button>
+        <br>
+        <button onClick="changeColor('navy')">navy</button>
+        <button onClick="changeColor('wheat')">wheat</button>
+        <button onClick="changeColor('ivory')">ivory</button>
+      </div>
+    </body>
+</html>
