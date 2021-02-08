@@ -4,66 +4,136 @@
   <head>
     <title>Calculator</title>
 
-     <link rel="stylesheet" type="text/css" href="style.css">
+     <style>
 
+      body {
+        text-align: center;
+        margin: 150px auto;
+      }
+
+      #calculator {
+        background-color: dimgray;
+        border:rebeccapurple 5px solid;
+        padding: 25px 20px;
+        margin: auto;
+        width: 30%;
+      }
+
+      #screen {
+        background-color: white;
+        font-size: 36px;
+        padding: 20px;
+        margin: 20px 5px;
+        text-align: right;
+      }
+
+      button {
+        background-color: lightgray;
+        border: plum 3px solid;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px;
+        padding: 10px 15px;
+        width: 15%;
+      }
+
+      .operator {
+        background-color: rebeccapurple;
+        border: lightgray 3px solid;
+      }
+
+
+      #clear,
+      #equal {
+        background-color: orchid;
+        border: dimgray 3px solid;
+      }
+
+      #clear {
+        width: 34%;
+      }
+
+      #equal {
+        width: 52%;
+      }
+
+
+     </style>
 
    </head>
    <body>
-     <header>
-       </header>
-     <main>
-       <div class="calculator">
-           <div class="answer-content">
-             <div class="content-wrapper">
-               <p id="screen">0</p>
-             </div>
-           </div>
-           <div class="number-content">
-               <div class="clear-row">
-                 <div class="content-wrapper">
-                   <button id="clear" class="clear-field">C</button>
-                   <button id="addition" data-action="addition" class="operator">+</button>
-                 </div>
-               </div>
-               <div class="first-row">
-                 <div class="content-wrapper">
-                   <button id="b1" >1</button>
-                   <button id="b2" >2</button>
-                   <button id="b3" >3</button>
-                   <button id="subtract" class="operator">-</button>
-                 </div>
-               </div>
-               <div class="second-row">
-                 <div class="content-wrapper">
-                   <button id="b4">4</button>
-                   <button id="b5">5</button>
-                   <button id="b6">6</button>
-                   <button id="multiply" data-action="multiply" class="operator">*</button>
-                 </div>
-               </div>
-               <div class="third-row">
-                 <div class="content-wrapper">
-                   <button id="b7">7</button>
-                   <button id="b8">8</button>
-                   <button id="b9">9</button>
-                   <button id="divide" data-action="divide" class="operator">/</button>
-                 </div>
-               </div>
-               <div class="equal-row">
-                 <div class="content-wrapper">
-                   <button id="b0">0</button>
-                   <button id="period">.</button>
-                   <button id="equal">=</button>
-                 </div>
-               </div>
-             </div>
-           </div>
-       </main>
-       
+     <div id="calculator">
+       <div id="screen">0</div>
+       <div id="calc-buttons">
+         <button id="Clear">C</button>
+         <button id="." class="period">.</button>
+         <button id="add" class="operator">+</button>
+         <br>
+         <button id="1">1</button>
+         <button id="2">2</button>
+         <button id="3">3</button>
+         <button id="sub" class="operator">-</button>
+         <br>
+         <button id="4">4</button>
+         <button id="5">5</button>
+         <button id="6">6</button>
+         <button id="mul" class="operator">*</button>
+         <br>
+         <button id="7">7</button>
+         <button id="8">8</button>
+         <button id="9">9</button>
+         <button id="div" class="operator">/</button>
+         <br>
+         <button id="0">0</button>
+         <button id="equal">=</button>
+       </div>
+     </div>
 
-       <footer>
-       </footer>
+     <script>
+      var calcButtons = document.getElementById("calc-buttons");
+      var calcScreen = document.getElementById("screen");
+      var calcEqual = document.getElementById("equal");
+
+      calcButtons.addEventListener('click', getNumber);
+      calcEqual.addEventListener('click', solveEquation);
+
+      function getNumber(num) {
+        const button = num.target.innerHTML;
+
+//C removes last digit on screen
+          if (button == "C") {
+//Need to add something for 0 on screen attempt to clear
+//taking length of screen valuue
+
+                if (calcScreen.innerHTML.length == 1) {
+                  calcScreen.innerHTML == "0";
+                }
+                else {
+                  var onScreen = calcScreen.innerHTML;
+                  calcScreen.innerHTML = onScreen.slice(0, -1);
+                }
+          } //end if button === "c"
+//click button chamges the screen to Number
+          else {
+                if (calcScreen.innerHTML == "0") {
+                  calcScreen.innerHTML = button;
+                  }
+    // continues adding value to string
+                else {
+                  calcScreen.innerHTML += button;
+                }
+        }
+      };
+
+      function solveEquation(){
+            var onScreen = (calcScreen.innerHTML);
+            console.log(onScreen);
+            calcScreen.innerHTML = Math.round(eval(onScreen));
+
+          };
+
+// resolve what is on screen,  to the nearest thousandth
+     </script>
+
    </body>
-
-
- </html>
+</html>
